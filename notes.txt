@@ -1,0 +1,148 @@
+>npx create-react-app mernchatappbypb
+>cd mernchatappbypb
+>npm start
+
+->downloaded one live-chat.png
+    kept that in public folder.
+    In index.html:-
+
+->App.js:-
+import './App.css';
+import MainContainer from './Components/MainContainer';
+
+function App() {
+  return (
+    <div className='App'>
+      <MainContainer/>      
+    </div>
+  );
+}
+
+export default App;
+
+->App.css:-
+
+*{
+  margin:0px;
+}
+
+.App{
+  background-color:#dddedd;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+->Components/MainContainer.js:-
+
+import React from 'react';
+import './MyStyles.css';
+
+function MainContainer(){
+    return <div className="main-container">MainContainer</div>;
+}
+
+export default MainContainer;
+
+*********->
+.main-container{
+    background-color: #f4f5f8;
+    height:90vh;
+    width:90vw;
+    display:flex;
+}
+
+.sidebar-container{
+    flex:0.3;
+}
+
+.workarea-container{
+    background-color: aqua;
+    flex:0.7;
+}
+
+
+App.js:-
+--------
+
+<div className='App'>
+      <Routes>
+        <Route path="/" element={<Login/>} />
+        <Route path="app" element={<MainContainer/>}>
+            <Route path="welcome" element={<Welcome/>}></Route>
+            <Route path="chat" element={<ChatArea/>}></Route>
+            <Route path="users" element={<Users/>}></Route>
+            <Route path="groups" element={<Groups/>}></Route>
+            <Route path="welcome" element={<CreateGroups/>}></Route>
+        </Route>
+      </Routes>
+  
+    </div>
+
+In MainContainer.js:-
+--------------------
+
+function MainContainer(){
+    return (
+    <div className="main-container">
+        <Sidebar/>
+        <Outlet/>
+
+        {/* <CreateGroups/> */}
+        {/* <Welcome/> */}
+
+        {/* <ChatArea/> */}
+
+    </div>
+    );
+}
+_________________________________________________________________________________________
+
+to include ROUTES:-
+
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from 'react-dom/client';
+
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />  
+    </BrowserRouter>
+  
+  </React.StrictMode>
+);
+_________________________________________________________________________________________
+
+
+NAVIGATE:-
+---------
+import { useNavigate } from 'react-router-dom';
+const navigate = useNavigate();
+<IconButton onClick={()=>{navigate('users')}}>
+                    <PersonAddIcon/>
+                </IconButton>
+
+_________________________________________________________________________________________
+material icons:-mui icons
+
+>npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+"@mui/icons-material": "^5.15.15",
+"@mui/material": "^5.15.15",
+
+------To remove input box border:-
+    border:none;
+
+------scrollbar:-
+    overflow: scroll;
+    scrollbar-width: none;
+
+______________________________links
+
+MATERIAL ICONS LINK:-
+https://mui.com/material-ui/react-button/
+
+CSS SCAN :-
+https://getcssscan.com/css-box-shadow-examples
+
